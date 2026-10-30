@@ -1,0 +1,38 @@
+{
+  "source": "https://docs.github.com/public/fpt/schema.docs.graphql",
+  "schemaSha256": "ee690896ae7d9126765c6a660174b40c9d1974b70db36af8559117b9c4a7b7a6",
+  "types": {
+    "AddPullRequestReviewThreadReplyInput": {
+      "body": "String!",
+      "clientMutationId": "String",
+      "pullRequestReviewId": "ID",
+      "pullRequestReviewThreadId": "ID!"
+    },
+    "ResolveReviewThreadInput": {
+      "clientMutationId": "String",
+      "resolutionReason": "PullRequestReviewThreadResolutionReason",
+      "threadId": "ID!"
+    },
+    "Mutation": {
+      "addPullRequestReviewThreadReply": "AddPullRequestReviewThreadReplyPayload",
+      "resolveReviewThread": "ResolveReviewThreadPayload"
+    },
+    "AddPullRequestReviewThreadReplyPayload": {
+      "comment": "PullRequestReviewComment"
+    },
+    "ResolveReviewThreadPayload": {
+      "thread": "PullRequestReviewThread"
+    },
+    "PullRequestReviewComment": {
+      "body": "String!",
+      "id": "ID!",
+      "state": "PullRequestReviewCommentState!",
+      "url": "URI!",
+      "viewerDidAuthor": "Boolean!"
+    },
+    "PullRequestReviewThread": {
+      "id": "ID!",
+      "isResolved": "Boolean!"
+    }
+  }
+}

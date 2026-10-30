@@ -1,0 +1,73 @@
+{
+  "name": "pi-engineering-workflows",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Specifications, tests, CI repair, commits, and pull request workflows for Pi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericbmerritt/pi-engineering-workflows.git"
+  },
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "code-review",
+    "agent-skills"
+  ],
+  "files": [
+    "extensions/",
+    "lib/",
+    "scripts/",
+    "review/",
+    "self-review/",
+    "review-respond/",
+    "spec-workflow/",
+    "adversarial-spec-review/",
+    "test-plan/",
+    "validation-standards/",
+    "pr-workflow/",
+    "commit-workflow/",
+    "fix-ci/",
+    "test-writing/",
+    "README.md"
+  ],
+  "pi": {
+    "extensions": [
+      "./extensions/review.ts"
+    ],
+    "skills": [
+      "./review",
+      "./self-review",
+      "./review-respond",
+      "./spec-workflow",
+      "./adversarial-spec-review",
+      "./test-plan",
+      "./validation-standards",
+      "./pr-workflow",
+      "./commit-workflow",
+      "./fix-ci",
+      "./test-writing"
+    ]
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.2.0",
+    "@earendil-works/pi-ai": "^1.2.0",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@earendil-works/pi-coding-agent": "1.2.0",
+    "@types/node": "22.19.19",
+    "typebox": "1.3.7",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint extensions lib tests && bash -n scripts/submit-review-batch.sh && bash -n scripts/respond-review-thread.sh",
+    "format:check": "biome format extensions lib tests package.json tsconfig.json biome.json",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+  }
+}
