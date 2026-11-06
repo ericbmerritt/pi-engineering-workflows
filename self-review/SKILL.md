@@ -152,24 +152,44 @@ second count that loses or duplicates them.
 
 ## 4. Present findings and offer actions
 
-Finish the agreed analysis before presenting deduplicated findings, ordered by
-impact. Use the shared finding format: snapshot-relative location, quoted
-code/claim, realistic failure or maintenance cost, and a concrete fix.
+Local patch: shift-skills PR 5, decide every problem before doing the work.
+
+Finish all agreed analysis passes before presenting any findings. Deduplicate
+problems and walk through one at a time, most severe first (Critical, Warning,
+Suggestion); do not dump the list. Use the shared finding format with every
+snapshot-relative location, the offending code/claim with line numbers, and a
+plain-words explanation of what is wrong and what it costs.
 Do not invent defects to meet a quota or call preferences critical.
 
-For each finding, offer actions with explicit scope:
+For each problem, explain the options, then stop and wait for a decision:
 
-- **Fix the named issue:** explain which files and behavior would change; ask
-  permission before editing. A choice approves only that stated correction.
-- **Defer:** keep a local follow-up, or draft a tracking issue. Creating an actual
-  external issue requires approval of its content and destination.
-- **Skip:** retain the known risk in the local summary. Skipping is not fixing.
+1. **Fix the named issue (recommended):** put the best real fix first; explain
+   which files and behavior change and why it fits. Offer genuinely different
+   alternatives with their tradeoffs when useful. A choice approves only that
+   stated correction, not immediate editing.
+2. **Out of scope: track it:** leave the code alone and keep a local follow-up,
+   or draft a tracking issue. Creating an actual external issue requires
+   approval of its exact content and destination.
+3. **Out of scope: drop it:** do no work; retain the known risk in the summary.
+
+Always offer both out-of-scope options, even when there is only one real fix.
+Record every decision in a running ledger: problem, in/out of scope, chosen
+option. Update earlier decisions when requested. If the user explicitly chooses
+recommendations for the rest, record those choices without asking again.
+Edit nothing and create no tracking items until every problem has a decision.
 
 Use `review_decision` for already explained action choices when available, or
 plain conversation otherwise. Cancellation authorizes nothing. Noninteractive
 runs report proposed fixes without editing or creating external work.
 
 ## 5. Fix only what was approved
+
+Once every problem is decided, show the decision ledger as a table, one row per
+problem. Then apply the approved in-scope fixes in file order and file the agreed
+tracking items, subject to the content/destination approval above. Dropped items
+get no work. Do not ask again for effects already explicitly approved; new effects
+still require permission. Run the approved project checks after the work and
+report their exit codes; if execution is not approved, report that blocker.
 
 Re-read affected files before changing them. Preserve unrelated user edits and
 do not overwrite concurrent changes. For staged-only review, an approved source
